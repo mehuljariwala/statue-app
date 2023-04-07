@@ -1,8 +1,1 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
-
-test('renders learn react link', () => {
-render(<App />);
-const linkElement = screen.getByText(/learn react/i);
-expect(linkElement).toBeInTheDocument();
-});
+<img width="1912" alt="image" src="https://user-images.githubusercontent.com/30499320/230654200-a2f689b5-c082-4d4a-87a5-7f3b9a12c465.png">
