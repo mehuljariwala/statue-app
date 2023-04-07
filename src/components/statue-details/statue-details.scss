@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+@import "../../styles/breakpoint.scss";
+
+.status-details-container {
+  display: block;
+
+  @include md-bp {
+    display: flex;
+  }
+
+  @include xl-bp {
+    height: 100%;
+  }
+}
