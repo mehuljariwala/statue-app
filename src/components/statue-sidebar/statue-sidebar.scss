@@ -5,6 +5,7 @@
   height: 100%;
   background-color: $sidebar-bg;
   position: relative;
+  transition: all 0.5s;
 
   & .sidebar-toggle {
     position: absolute;
@@ -21,6 +22,26 @@
     right: 0px;
     left: 0;
     width: 30px;
+  }
+
+  & .show-sidebar {
+    opacity: 1;
+    width: auto;
+    height: calc(100vh - 50px);
+    overflow-x: auto;
+
+    * {
+      display: block;
+    }
+  }
+
+  & .hide-sidebar {
+    opacity: 0;
+    width: 0;
+
+    * {
+      display: none;
+    }
   }
 
   & .top-left-arrow {
@@ -105,6 +126,15 @@
       margin: 16px 0px;
       font-size: 1.5rem;
       font-weight: 300;
+    }
+
+    & .expanded-h-description {
+      color: #44585e;
+      line-height: 1.5rem;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
     }
 
     & .h-description {

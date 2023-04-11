@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import csx from "classnames";
 import IconHeart from "../../icons/icon-heart";
 import IconEye from "../../icons/icon-eye";
@@ -9,6 +9,7 @@ import IconArrowLeft from "../../icons/icon-arrow-left";
 import IconArrowLeftForward from "../../icons/icon-arrow-left-forward";
 
 export const StatusSidebar = ({ toggleSidbar, onHandleSidebar }) => {
+  const [readMore, setReadMore] = useState(false);
   const content = {
     heading: "MAITREYA BUDDHA IN GESTURE OF FEARLESSNESS (ABHAYA MUDRA)",
     detailsInfo: [
@@ -29,13 +30,18 @@ export const StatusSidebar = ({ toggleSidbar, onHandleSidebar }) => {
         desc: "National Museum",
       },
     ],
-    history: `Maitreya, the future Buddha to be, resides in the Tushita heaven as a bodhisattva waiting to humanitv. In Buddhism. Maitreva is the eighth Buddha, a successor of the seven historical Buddhas (santa-manushi Buddhas). The Digha Nikaya mentions. Maitreva Buddha will be born in Ketumati in present-day Varanasi, Uttar Pradesh. As a bodhisattva. Maitreva wears a heavilv adorned with earrings. wristlets. necklaces, and an amulet. The`,
+    history: `Maitreya, the future Buddha to be, resides in the Tushita heaven as a bodhisattva waiting to humanitv. In Buddhism. Maitreva is the eighth Buddha, a successor of the seven historical Buddhas (santa-manushi Buddhas). The Digha Nikaya mentions. Maitreva Buddha will be born in Ketumati in present-day Varanasi, Uttar Pradesh. As a bodhisattva. Maitreva wears a heavilv adorned with earrings. wristlets. necklaces, and an amulet. Theresides in the Tushita heaven as a bodhisattva waiting to humanitv. In Buddhism. Maitreva is the eighth Buddha, a successor of the seven historical Buddhas (santa-manushi Buddhas). The Digha Nikaya mentions. Maitreva Buddha will be born in Ketumati in present-day Varanasi, Uttar Pradesh. As a bodhisattva. Maitreva wears a heavilv adorned with earrings. wristlets. necklaces, and an amulet. The`,
   };
 
   const renderContent = () => {
     return (
-      <div style={{ opacity: toggleSidbar ? 1 : 0 }}>
-        <div style={{ display: toggleSidbar ? "block" : "none" }}>
+      <div
+        className={csx({
+          "show-sidebar": toggleSidbar,
+          "hide-sidebar": !toggleSidbar,
+        })}
+      >
+        <div>
           <div className="top-left-arrow">
             <IconArrowLeft />
           </div>
@@ -71,13 +77,27 @@ export const StatusSidebar = ({ toggleSidbar, onHandleSidebar }) => {
 
           <section className="history-container">
             <h2 className="h-heading">Description:</h2>
-            <p className="h-description">{content.history}</p>
+            <p
+              className={csx({
+                "h-description": readMore,
+                "expanded-h-description": !readMore,
+              })}
+            >
+              {content.history}
+            </p>
           </section>
 
           <section className="read-more-container">
-            <a href="www.google.com" className="read-more-link">
+            <a
+              href="void(0)"
+              className="read-more-link"
+              onClick={(e) => {
+                e.preventDefault();
+                setReadMore((prev) => !prev);
+              }}
+            >
               <IconRightArrow />
-              <span>Read More</span>
+              <span>{`${!readMore ? "Read More" : "Read Less"}`}</span>
             </a>
           </section>
 
